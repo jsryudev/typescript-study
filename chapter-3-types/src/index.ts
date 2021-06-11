@@ -60,14 +60,14 @@ let dBigint = aBigint < 1235;
 // let eBigint = 88.5n; error: bigint is awlays integer type
 let fBigint: bigint = 100n;
 let gBigint: 100n = 100n;
-let hBigint: bigint = 100;
+// let hBigint: bigint = 100; error: bigint is not assign 100
 
 /* string */
 
 let aString = 'hello';
 var bString = 'typescript';
 const cString = '!';
-let dString = a + ' ' + b + c;
+let dString = aString + ' ' + bString + cString;
 let eString: string = 'zoom';
 let fString: 'john' = 'john';
 // let gString: 'john' = 'zoe'; error: gString typs is 'john'
