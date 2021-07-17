@@ -252,3 +252,9 @@ function buildArray() {
 
 let myArray = buildArray(); // (string | number)[]
 // myArray.push(true); error: boolean type cannot be assigned to (string | number) type.
+
+/* Tuple */
+
+let aTuple: [number] = [1];
+let bTuple: [string, string, number] = ['malcom', 'gladwell', 1963];
+// bTuple = ['queen', 'elizabeth', 'ii', 1926]; error: string type cannot be assigned to number type.
