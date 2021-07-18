@@ -258,3 +258,113 @@ let myArray = buildArray(); // (string | number)[]
 let aTuple: [number] = [1];
 let bTuple: [string, string, number] = ['malcom', 'gladwell', 1963];
 // bTuple = ['queen', 'elizabeth', 'ii', 1926]; error: string type cannot be assigned to number type.
+
+let trainFares: [number, number?][] = [[3.75], [8.25, 7.75], [10.5]];
+let moreTrainFares: ([number] | [number, number])[] = [
+  // ...
+];
+
+let friends: [string, ...string[]] = ['Sara', 'Tali', 'Chloe', 'Claire'];
+let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c'];
+
+let as: readonly number[] = [1, 2, 3];
+let bs: readonly number[] = as.concat(4);
+let three = bs[2];
+// as[4] = 5; error: readonly
+
+// as.push(6) error: readonly
+
+type A = readonly string[];
+type B = ReadonlyArray<string>;
+type C = Readonly<string[]>;
+
+type D = readonly [number, number];
+type E = Readonly<[number, string]>;
+
+/* null, undefined, void, never */
+
+function aNull(x: number) {
+  if (x < 10) {
+    return x;
+  }
+
+  return null;
+}
+
+function bUndefined() {
+  return undefined;
+}
+
+function cVoid() {
+  let a = 2 + 2;
+  let b = 3 + 3;
+}
+
+function dNever() {
+  throw TypeError('Always error!');
+}
+
+function eNever() {
+  while (true) {
+    // doSomething();
+  }
+}
+
+/* enum */
+
+enum Language {
+  English,
+  Spanish,
+  Russian,
+}
+
+let myFirstLanguage = Language.English;
+let mySecondLanguage = Language['Russian'];
+
+enum EnumColor {
+  Red = '#c10000',
+  Blue = '#007ac1',
+  Pink = 0xc10050,
+  White = 255,
+}
+
+EnumColor[6]; // !!
+
+const enum Languages {
+  English,
+  Spanish,
+  Russian,
+}
+
+// Languages[4]; error: const enum is only string literal
+
+const enum Flippable {
+  Burger,
+  Chair,
+  Cup,
+  Stackboard,
+  Table,
+}
+
+function flip(f: Flippable) {
+  return 'flipped it';
+}
+
+flip(Flippable.Burger);
+flip(Flippable.Chair);
+flip(12); // !! Flippable is number type
+
+const enum Flippables {
+  Burger = 'Burger',
+  Chair = 'Chair',
+  Cup = 'Cup',
+  Stackboard = 'Stackboard',
+  Table = 'Table',
+}
+
+function flips(f: Flippables) {
+  return 'flipped it';
+}
+
+flips(Flippables.Burger);
+// flips(12);
